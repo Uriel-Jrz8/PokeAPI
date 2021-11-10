@@ -8,15 +8,18 @@ import { ApipokedexService } from './services/apipokedex.service';
 })
 export class AppComponent {
   title = 'pokeapi';
-
+  pokemon:any;
+  image:string='';
   ngOnInit() {}
 
   constructor(private pokedex: ApipokedexService) {}
 
   search_pokemon(name_poke: string) {
     this.pokedex.getpokemon(name_poke).subscribe(
-      (res) => {
-        console.log(res);
+      (res:any) => {
+        console.log(res),
+        this.pokemon=res,
+        this.image= res.sprites.other.dream_world.front_default;
       },
       (err) => {
         console.log(err);

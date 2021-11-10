@@ -1,7 +1,33 @@
-<form (submit)="submit(name)">
+<div class="container p-4">
+  <div class="row">
 
-  <input type="text" #name>
-<button >enviar</button>
+    <div class="col-md-6">
+      <div class="card border-primary mb-3" >
+        <div class="card-body">
+          <div class="text-center">
+          <h4 class="card-title" style="text-align: center;">Consulta un Pokémon</h4>
+          <img class="img-responsive center-block" style="max-height: 180px;" src="../assets/images/pokeapi.png" alt="photo-api"/>
+          </div>
+          <form (submit)="submit(name)">
+            <label class="form-label" for="disabledInput">Ingresa el nombre de tu Pokémon</label>
+            <input type="text" class="form-control" placeholder="Pokémon..." #name />
+            <div class="text-center">
+              <button class="btn btn-dark mt-2">Consultar Pokémon</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
-</form>
+      <div class="col-md-6 text-center">
+        <div *ngIf="pokemon" class="card border-primary mb-3" >
+          <div class="card-body">
+            <img class="img-responsive center-block" src="{{ image }}" alt="photo" width="200px"/>
+            <h1 class="card-title" style="text-align: center;">{{pokemon.species.name}}</h1>
+            <p><span class="badge rounded-pill bg-secondary" style="font-size: 1rem;">Nº {{pokemon.id}}</span></p>
 
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
